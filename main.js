@@ -2,11 +2,12 @@
  * @Author: tuWei
  * @Date: 2023-02-09 15:28:54
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-13 14:50:15
+ * @LastEditTime: 2023-02-13 18:11:08
  */
 import readLine from "readline";
 import got, { Options } from 'got';
 import { Command } from 'commander';
+import inquirer from 'inquirer';
 import axios from 'axios';
 // import fs from 'fs';
 import chalk from 'chalk';
@@ -24,7 +25,7 @@ axios.interceptors.request.use(
   err => Promise.resolve(err)
 );
 let isCloseRun = false;
-let getH5AppUrl, version, software_id;
+let getH5AppUrl, version, software_id, lastVersionRow;
 const startNow = Date.now();
 const bufferArr = [];
 const Log = console.log;
@@ -33,56 +34,70 @@ program
   .option('-n, --name <name>')
   .option('-v, --version <版本>')
   .option('-f, --forced <是否强制发布版本>');
-
 program.parse();
+
+//获取命令行输入参数
 const opts = program.opts();
-const RL = readLine.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-// console.log(opts);
+
 checkoutNameAndVersion();
-function checkoutNameAndVersion(){
+
+async function checkoutNameAndVersion(){
   if(!opts.version || !opts.name){
-    Log(chalk.hex('#FFA500')(' ---------------- 请指定项目名称和版本号，详情请看config配置文件 ---------------- '));
-    Log(chalk.hex('#FFA500')(' ---------------- 运行格式示例，node main.js -n manage -v v2.0.423  ---------------- '));
+    Log(chalk.blue(' ---------------- 正在匹配项目与版本号...  ---------------- '));
     isCloseRun = true;
     if(!opts.name){
-      RL.question('请输入你需要运行的项目名称: ', (answer) => {
-        opts.name = answer;
+      inquirer.prompt({
+        type: 'list',
+        name: '你选择需要运行的项目',
+        message: '',
+        choices: [
+          ...Object.keys(config.pList)
+        ],
+      }).then(async (answer) => {
         isCloseRun = false;
-        checkoutNameAndVersion();
-      });
-    }
-    if(!opts.version){
-      RL.question('请输入你需要运行的项版本号: ', (answer) => {
-        opts.version = answer;
-        isCloseRun = false;
-        checkoutNameAndVersion();
-      });
+        opts.name = answer['你选择需要运行的项目'];
+        software_id = config.pList[opts.name].software_id;
+        if(!lastVersionRow){
+          lastVersionRow = await versionTesting();
+        }
+        if(!opts.version){
+          inquirer.prompt({
+            type: 'input',
+            name: '请输入你需要运行的项版本号',
+            default() {
+              let copyVersion = lastVersionRow.version;
+              return copyVersion.substr(0, copyVersion.lastIndexOf('.')) + '.' + (copyVersion.substr(copyVersion.lastIndexOf('.') + 1, copyVersion.length - 1) * 1 + 1); 
+            },
+          }).then((answer)=>{
+            isCloseRun = false;
+            console.log(answer);
+            opts.version = answer['请输入你需要运行的项版本号'];
+            initRun();
+          })
+        }else{
+          initRun();
+        }
+      })
     }
   }else{
-    RL.close();
     initRun();
   }
 }
+
 function initRun(){
   version = opts.version;
   if(isCloseRun) return;
   try{
-    let pname = config[opts.name].name;
+    let pname = config.pList[opts.name].name;
+    software_id = config.pList[opts.name].software_id;
     let nameVers = pname.substr(0, pname.length - 4) + version + pname.substr(-5);
     getH5AppUrl = `https://yunwei-lonch.oss-cn-beijing.aliyuncs.com/package/${pname}/${nameVers}.zip`;
-    Log(chalk.hex('#FFA500')(` ---------------- 包下载地址: ${getH5AppUrl} ---------------- `));
+    Log(chalk.blue(` ---------------- 包下载地址: ${getH5AppUrl} ---------------- `));
   }catch{
-    Log(chalk.hex('#FFA500')(` ---------------- 执行命令格式出错: name 不存在 ${opts.name} ---------------- `));
+    Log(chalk.hex('#FFA500')(` ---------------- name 不存在 ${opts.name} ---------------- `));
+    return;
   }
-  try{
-    software_id = config[opts.name].software_id;
-  }catch {
-    isCloseRun = true;
-    Log(chalk.hex('#FFA500')(` ---------------- 您指定的项目名称不存在，请检查名称: ${opts.name} ---------------- `));
-  }
+  
   //文件流存储
   if(version && software_id){
   const options = new Options({
@@ -100,22 +115,22 @@ function initRun(){
     bufferArr.push(chunk);
   });
   stream.on('end', async ()=>{
-    Log(chalk.blue(' ---------------- 下载zip包完成 - 开始上传zip包----------------'));
     //根据id查询所有可用版本
-    const versionRow = await versionTesting();
-    if(version === versionRow.version && !opts.forced){
+    if(version === lastVersionRow.version && !opts.forced){
       Log(chalk.hex('#FFA500')(' ---------------- 当前上传包于已经发布版本一致，请更新版本号后发布, 如需强制更新上传请加参数 -f 1 ----------------'));
       return;
     }
     if(!isCloseRun){
       //上传zip包
+      Log(chalk.blue(' ---------------- 下载zip包完成 - 开始上传zip包----------------'));
       updateFile();
     }
   });
   }
 }
+
 //开始上传
-const versionTesting = async ()=>{
+async function versionTesting() {
   let queryPageArgs = {
     demand: {
       productId: productId,
@@ -158,6 +173,7 @@ async function updateFile(){
     }
     try{
       const updateOssRes = await sendApi(updateOssUrl, { ...formData}, headers);
+      Log(chalk.blue(' ---------------- zip上传完成 - 开始解析OSS地址----------------'));
       var $ = cheerio.load(updateOssRes); //如果是html格式
       urlText = $('Location').text();
     }catch(error) {
@@ -191,7 +207,9 @@ async function updateFile(){
       Log(chalk.blue(` ---------------- ${rowFlag.serviceResult.reason} ---------------- `));
       return;
     }
-    const versionRow = await versionTesting();
+    Log(chalk.blue(` ---------------- 软件版本保存完成，正在发布新版本 ---------------- `));
+    // 需要再次获取新发布的App包
+    lastVersionRow = await versionTesting();
     //发布新版本包
     let saveUpdateSettingArgs = {
       demand: {
@@ -199,7 +217,7 @@ async function updateFile(){
         force_update: true,
         current: 1,
         rowCount: 100,
-        version_id: versionRow.id,
+        version_id: lastVersionRow.id,
         strategy_id: '001', //策略类型
         software_id: software_id,
         moduleCode: "000705"

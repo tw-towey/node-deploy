@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-02-12 18:49:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-13 15:18:06
+ * @LastEditTime: 2023-02-13 15:56:44
  */
 
 // 快速构建移动端App包 构建前提是下载流水线线上的zip包，所以需要自动部署需要等待流水线包构建完成后使用。
@@ -55,13 +55,15 @@ const itoc = {
 }
 
 export default {
-  manage,
-  puyao,
-  ootfe,
-  itoc,
-  lets,
-  letsadmin,
-  yfc,
+  pList:{
+    manage,
+    puyao,
+    ootfe,
+    itoc,
+    lets,
+    letsadmin,
+    yfc,
+  },
   commonUrl:{
     getSign: 'https://test-platform-gateway.lonch.com.cn/osssign/sign/getSign',
     queryAppInnerVersion: 'https://test-platform-gateway.lonch.com.cn/appClient/App/QueryMaxAppInnerVersion',
