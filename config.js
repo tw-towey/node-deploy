@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-02-12 18:49:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-13 14:36:26
+ * @LastEditTime: 2023-02-13 15:18:06
  */
 
 // 快速构建移动端App包 构建前提是下载流水线线上的zip包，所以需要自动部署需要等待流水线包构建完成后使用。
@@ -43,7 +43,7 @@ const lets = {
 }
 
 //乐享管理后台
-const lexiang = {
+const letsadmin = {
   name: "H5-lonch-lexiangadmin-test",
   software_id: '2ab9f992a05a45b9a1843f6e2841a1f6',
 }
@@ -60,7 +60,8 @@ export default {
   ootfe,
   itoc,
   lets,
-  lexiang,
+  letsadmin,
+  yfc,
   commonUrl:{
     getSign: 'https://test-platform-gateway.lonch.com.cn/osssign/sign/getSign',
     queryAppInnerVersion: 'https://test-platform-gateway.lonch.com.cn/appClient/App/QueryMaxAppInnerVersion',
