@@ -1,8 +1,9 @@
+#!/usr/bin/env node
 /*
  * @Author: tuWei
  * @Date: 2023-02-09 15:28:54
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-13 18:17:18
+ * @LastEditTime: 2023-02-13 19:58:23
  */
 // import readLine from "readline";
 import got, { Options } from 'got';

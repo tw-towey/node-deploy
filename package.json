@@ -5,6 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "deply": "./main.js"
+  },
   "author": "",
   "license": "ISC",
   "description": "",
@@ -13,11 +16,10 @@
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
     "formdata-node": "^5.0.0",
-    "inquirer": "^9.1.4"
-  },
-  "type": "module",
-  "devDependencies": {
+    "inquirer": "^9.1.4",
     "cheerio": "^1.0.0-rc.12",
     "got": "^12.5.3"
-  }
+  },
+  "type": "module",
+  "devDependencies": {}
 }
