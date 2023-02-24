@@ -4,8 +4,8 @@ import config from './config.js';
 import { Command } from 'commander';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
-import { default as child_process } from 'child_process';
-import { default as crypto } from 'crypto';
+import child_process from 'child_process';
+import crypto from 'crypto';
 
 
 const Log = console.log;
