@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import chalk from 'chalk';
 import robot from 'robotjs';
+import readline from 'readline';
 
 const Log = console.log;
 Log(chalk.blue(' ---------------- 开始执行监听程序...  ---------------- '));
@@ -54,10 +55,16 @@ async function moveMouseHandler(){
 }
 
 function putOnLogs() {
-  process.stdout.write(chalk.blue( `当前移动时间:  `) + chalk.green( `${ Date() }`) + chalk.blue(`  移动总计:  `) + chalk.red(`${totalNumber}\n`));
-  process.stdout.clearScreenDown();
-  process.stdout.clearLine();
-  process.stdout.moveCursor(0, -1);
+  clearLine();
+  process.stdout.write(chalk.blue( `当前移动时间:  `) + chalk.green( `${ Date() }`) + chalk.blue(`  移动总计:  `) + chalk.red(`${totalNumber}`));
+  // process.stdout.clearScreenDown();
+  // process.stdout.clearLine();
+  // process.stdout.moveCursor(0, -1);
+}
+
+function clearLine() {
+  readline.cursorTo(process.stdout, 0);
+  readline.clearLine(process.stdout, 0);
 }
 
 process.on('exit', ()=>{
