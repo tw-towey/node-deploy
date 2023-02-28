@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-02-12 18:49:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-15 15:00:02
+ * @LastEditTime: 2023-02-28 19:35:12
  */
 
 // 快速构建移动端App包 构建前提是下载流水线线上的zip包，所以需要自动部署需要等待流水线包构建完成后使用。
@@ -87,7 +87,8 @@ export default {
     saveSoftwareVersion: 'https://test-platform-gateway.lonch.com.cn/appClient/App/SaveSoftwareVersion',
     updateOssUrl: 'https://resources-lonch.oss-cn-beijing.aliyuncs.com',
     queryPagedSoftwareVersion: 'https://test-platform-gateway.lonch.com.cn/appClient/App/QueryPagedSoftwareVersion',
-    saveUpdateSettingByStrategyAll: 'https://test-platform-gateway.lonch.com.cn/appClient/App/SaveUpdateSettingByStrategyAll'
+    saveUpdateSettingByStrategyAll: 'https://test-platform-gateway.lonch.com.cn/appClient/App/SaveUpdateSettingByStrategyAll',
+    dologin: 'https://test-gateway.lonch.com.cn/mserver/user/dologin',
   },
   productId,
 }

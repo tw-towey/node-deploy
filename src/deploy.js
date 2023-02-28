@@ -1,24 +1,17 @@
 #!/usr/bin/env node
-// import readLine from "readline";
 import got, { Options } from 'got';
 import { Command } from 'commander';
 import inquirer from 'inquirer';
-import axios from 'axios';
-// import fs from 'fs';
-import chalk from 'chalk';
 import { FormData } from 'formdata-node'; 
 import * as cheerio from 'cheerio';
+import chalk from 'chalk';
+import axios from './axios.js';
 import config from './config.js';
+
+
 const { getSign, queryAppInnerVersion, saveSoftwareVersion, updateOssUrl, queryPagedSoftwareVersion, saveUpdateSettingByStrategyAll } = config.commonUrl;
 const { productId } = config;
-axios.interceptors.request.use(
-  cfg => {
-    cfg.headers['protocol-version'] = "2.0";
-    cfg.headers['access-token'] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhT3duZXJPcmdJZCI6IjEyOTE3OTE0NTY5MDI4ODEyOCIsImFjY291bnRJZCI6ImRjNjg1ZTUzMzgyODRiMWY4ZmI1MGU5ZmU0ZDM5OTM1IiwicHJvZHVjdElkIjoiMSIsImV4cCI6MTI0NzYyMTEyMTgsInVzZXJJZCI6ImM3M2Y2NzYxYWUzNjQyZGE4ZDk1MzVkNWNhMDM4NTI1IiwidXVpZCI6IjQ0NjBmNTM3NzI3ZDQ2YTNiMTBkNGNiYjUxOGJmZjNhIiwiaWF0IjoxNjc2MjExMjE4LCJ1c2VybmFtZSI6IjE4NTk4NTkyMjg5In0.-iljI95Hs3a0pyew53Zn_reExdcZ3iMFkOxQV3Vj-3s";
-    return cfg;
-  },
-  err => Promise.resolve(err)
-);
+
 let isCloseRun = false;
 let getH5AppUrl, version, software_id, lastVersionRow;
 const startNow = Date.now();
@@ -30,12 +23,13 @@ program
   .option('-v, --version <版本>')
   .option('-f, --forced <是否强制发布版本>');
 program.parse();
-
 //获取命令行输入参数
 const opts = program.opts();
 
+
 checkoutNameAndVersion();
 
+//检验版本号
 async function checkoutNameAndVersion(){
   if(!opts.version || !opts.name){
     Log(chalk.blue(' ---------------- 正在匹配项目与版本号...  ---------------- '));
@@ -79,6 +73,7 @@ async function checkoutNameAndVersion(){
   }
 }
 
+//初始化程序
 function initRun(){
   version = opts.version;
   if(isCloseRun) return;
@@ -222,6 +217,7 @@ async function updateFile(){
     Log(chalk.blue(` ---------------- 新版本发布完成,版本号为：${version} ---------------- `));
 }
 
+//api请求
 function sendApi(url, args, headers){
   return new Promise((resolve, reject) => {
     axios.post(url, args, headers || null).then((res)=>{

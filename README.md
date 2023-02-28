@@ -2,29 +2,38 @@
  * @Author: tuWei
  * @Date: 2023-02-13 15:01:52
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-13 20:03:44
+ * @LastEditTime: 2023-02-28 19:34:57
 -->
 ### 操作步骤
 
-#### 1. 核心文件main.js 
-#### 1.本地启动
+#### node小工具
+
+详情请查看`package.json`
+推荐使用pnpm安装依赖
+
+#### 1.pnpm本地启动
 
 进入本地目录执行
 
 ```bash
-npm install
-node main.js
+npm install pnpm -g
+cd node-deploy
+pnpm install
+npm link
 ```
 
-### 2.全局安装使用
+### 2.npm全局安装使用
 
 ```shell
-npm i . -g
-cnpm i
+cd node-deploy
+npm link
+npm install -g 
 ```
 
-运行命令 
+运行命令
 
 ```shell
-deply
+deploy 
+# token --lelp
+# deploy --lelp
 ```
