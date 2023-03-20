@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-02-12 18:49:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-28 19:35:12
+ * @LastEditTime: 2023-03-20 16:49:25
  */
 
 // 快速构建移动端App包 构建前提是下载流水线线上的zip包，所以需要自动部署需要等待流水线包构建完成后使用。
@@ -67,6 +67,11 @@ const chat = {
   name: 'H5-chat-test',
   software_id: 'ad9acc66a69146de9a2b26ae6878a41a'
 }
+//工作流
+const Bps = {
+  name: 'H5-workflow-test',
+  software_id: 'dca8537bdf7d4a918553d7c11f60b39d'
+}
 export default {
   pList:{
     manage,
@@ -76,6 +81,7 @@ export default {
     lets,
     letsadmin,
     yfc,
+    Bps,
     'telescreenApple(云屏小程序)': telescreenApple,
     'appleftbar(App侧边栏)': appleftbar,
     'chart(图表)': chart,
