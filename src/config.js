@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-02-12 18:49:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-03-22 16:50:45
+ * @LastEditTime: 2023-04-18 16:11:50
  */
 
 // 快速构建移动端App包 构建前提是下载流水线线上的zip包，所以需要自动部署需要等待流水线包构建完成后使用。
@@ -72,7 +72,7 @@ const Bps = {
   name: 'H5-workflow-test',
   software_id: 'dca8537bdf7d4a918553d7c11f60b39d'
 }
-//工作流
+//人力资源
 const Ehr = {
   name: 'H5-lonch-ehr-test',
   software_id: '6348a2941fb4401c9083a7ea24d1cf4e'
@@ -83,7 +83,16 @@ const telescreen = {
   name: 'H5-lonch-telescreen-test',
   software_id: '5a44c86f77b94674b2cc7e9b336831b8'
 }
-
+//呼叫中心
+const yunCall = {
+  name: "H5-yuncall-test",
+  software_id: '3f80c22f8809459eb2b28770851c9417',
+}
+//BI
+const bi = {
+  name: "H5-lonch-BI-test",
+  software_id: '513df6041a0911ed940db8599fe53f7a',
+}
 export default {
   pList:{
     manage,
@@ -100,6 +109,8 @@ export default {
     'appleftbar(App侧边栏)': appleftbar,
     'chart(图表)': chart,
     'chat(聊天)': chat,
+    'yunCall(呼叫中心)': yunCall,
+    'BI': bi
   },
   commonUrl:{
     getSign: 'https://test-platform-gateway.lonch.com.cn/osssign/sign/getSign',
