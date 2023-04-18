@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-02-12 18:49:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-04-18 16:11:50
+ * @LastEditTime: 2023-04-18 16:29:23
  */
 
 // 快速构建移动端App包 构建前提是下载流水线线上的zip包，所以需要自动部署需要等待流水线包构建完成后使用。
@@ -93,6 +93,16 @@ const bi = {
   name: "H5-lonch-BI-test",
   software_id: '513df6041a0911ed940db8599fe53f7a',
 }
+//云诊室
+const angelsWing = {
+  name: 'H5-angels-wings-app-test',
+  software_id: 'eec3d0ed8ce748499e777600eeb1a1af'
+}
+//云管家
+const cloudStewardApp = {
+  name: 'H5-cloud-steward-app-test',
+  software_id: 'b37b8ed5ffe348ddb662f567de8e28fd'
+}
 export default {
   pList:{
     manage,
@@ -110,7 +120,9 @@ export default {
     'chart(图表)': chart,
     'chat(聊天)': chat,
     'yunCall(呼叫中心)': yunCall,
-    'BI': bi
+    'BI': bi,
+    'angelsWing(云诊室)': angelsWing,
+    'cloudStewardApp(云管家)': cloudStewardApp,
   },
   commonUrl:{
     getSign: 'https://test-platform-gateway.lonch.com.cn/osssign/sign/getSign',
