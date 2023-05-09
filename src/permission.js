@@ -2,24 +2,11 @@
  * @Author: tuWei
  * @Date: 2023-05-09 10:27:15
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-05-09 11:32:34
+ * @LastEditTime: 2023-05-09 13:10:23
  */
 import axios from './axios.js';
 import config from './config.js';
 const { getPermissionUrlList, insertPermissionUrl } = config.commonUrl;
-
-
-
-//api请求
-function sendApi(url, args, headers){
-  return new Promise((resolve, reject) => {
-    axios.post(url, args, headers || null).then((res)=>{
-      resolve(res.data);
-    }).catch((err) => {
-      reject(err);
-    })
-  })
-}
 
 async function getPermissionList(){
   // 必填
@@ -62,4 +49,16 @@ async function savePermiss(permsId, item){
   }
   let a = await sendApi(insertPermissionUrl, args);
   console.log( a.serviceResult.data, 'url:', item.url );
+}
+
+
+//api请求
+function sendApi(url, args, headers){
+  return new Promise((resolve, reject) => {
+    axios.post(url, args, headers || null).then((res)=>{
+      resolve(res.data);
+    }).catch((err) => {
+      reject(err);
+    })
+  })
 }
