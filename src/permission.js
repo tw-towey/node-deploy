@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-05-09 10:27:15
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-05-09 13:10:23
+ * @LastEditTime: 2023-05-13 17:16:10
  */
 import axios from './axios.js';
 import config from './config.js';
@@ -10,11 +10,11 @@ const { getPermissionUrlList, insertPermissionUrl } = config.commonUrl;
 
 async function getPermissionList(){
   // 必填
-  let permsId = '18665c0aa65940ecb209ae81ee790984';
+  let permsId = 'f403d10aa1a34397974893107f87f40c';
   //必填
   const urls = {
-    queryLegalPersonOrgList: { module: 'pso', url: '/common/queryLegalPersonOrgList', method: 'POST', comment: '销方单位列表' },
-  }
+    createFromSms: { module: 'ca', url: '/systemHumanApply/createFromSms', method: 'POST', comment: '创建注册人员' }
+  };
   let args = {
     demand:{
       rowCount: 100,

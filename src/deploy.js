@@ -193,6 +193,7 @@ async function updateFile(){
     };
     // 获取发布版本号的id
     const rowFlag = await sendApi(saveSoftwareVersion, saveSoftwareArgs);
+    console.log(rowFlag);
     if(!rowFlag.serviceResult.success){
       Log(chalk.blue(` ---------------- ${rowFlag.serviceResult.reason} ---------------- `));
       return;
