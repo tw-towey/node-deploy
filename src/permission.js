@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-05-09 10:27:15
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-05-13 17:16:10
+ * @LastEditTime: 2023-05-17 10:41:49
  */
 import axios from './axios.js';
 import config from './config.js';
@@ -13,7 +13,7 @@ async function getPermissionList(){
   let permsId = 'f403d10aa1a34397974893107f87f40c';
   //必填
   const urls = {
-    createFromSms: { module: 'ca', url: '/systemHumanApply/createFromSms', method: 'POST', comment: '创建注册人员' }
+    removeAssignedBizDic: { module: 'ca', url: '/bizDic/removeAssignedBizDic', method: 'POST', comment: '解除分配字典' },
   };
   let args = {
     demand:{
