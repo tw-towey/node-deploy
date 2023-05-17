@@ -111,7 +111,7 @@ const yzsManage = {
 // 微问诊
 const cloudinquiryapp = {
   name: "H5-cloud-inquiry-app-test",
-  software_id: "419e78a08a5a41cbbf909d9a832c147e",
+  software_id: "41e39bfc1a0911ed940db8599fe53f7a",
 }
 export default {
   pList:{
@@ -133,7 +133,7 @@ export default {
     'BI': bi,
     'angelsWing(云诊室)': angelsWing,
     'cloudStewardApp(云管家)': cloudStewardApp,
-    '微问诊': cloudinquiryapp,
+    '问微诊': cloudinquiryapp,
     'yzsManage(云诊室后台)': yzsManage,
   },
   commonUrl:{
