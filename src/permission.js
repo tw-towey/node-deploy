@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-05-09 10:27:15
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-05-14 16:34:57
+ * @LastEditTime: 2023-05-17 14:58:59
  */
 import axios from './axios.js';
 import config from './config.js';
@@ -13,8 +13,8 @@ async function getPermissionList(){
   let permsId = 'f403d10aa1a34397974893107f87f40c';
   //必填
   const urls = {
-    queryPharmacistPracticeLicenseResult: { module: 'ocr', url: '/api/ocr/v1/task/queryPharmacistPracticeLicenseResult', method: 'POST', expire: 0, comment: '药师执业资格证' },
-  }
+    removeAssignedBizDic: { module: 'ca', url: '/bizDic/removeAssignedBizDic', method: 'POST', comment: '解除分配字典' },
+  };
   let args = {
     demand:{
       rowCount: 100,
