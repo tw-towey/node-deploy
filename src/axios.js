@@ -2,14 +2,14 @@
  * @Author: tuWei
  * @Date: 2023-02-24 15:34:11
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-05-09 11:30:48
+ * @LastEditTime: 2023-08-27 18:17:50
  */
 import axios from 'axios';
 
 axios.interceptors.request.use(
   cfg => {
     cfg.headers['protocol-version'] = "2.0";
-    cfg.headers['access-token'] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhT3duZXJPcmdJZCI6IjEyOTE3OTE0NTY5MDI4ODEyOCIsImFjY291bnRJZCI6IjcwOWIzZWJmNjUyYjQ5YzQ5ZGNlOWZhNDQzMzA2OGZjIiwicHJvZHVjdElkIjoiMSIsImV4cCI6MTI0ODM3MzYzMDMsInVzZXJJZCI6IjkxODU2MjE3YzFmYzQ4ZmY5ODZlODUxNWUzODhlNzA3IiwidXVpZCI6IjI5ZDhiODZjZmNkMTRlNWFhYjI1MDg4MmY1MTMyOTQyIiwiaWF0IjoxNjgzNzM2MzAzLCJ1c2VybmFtZSI6IjEzNTUyNTIxNjk4In0.uNE27D-E-MR6KaWQ-ybHEQJz3FxzSS3Mrdj6YxX-d0M";
+    cfg.headers['Access-Token'] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhT3duZXJPcmdJZCI6IjEyOTE3OTE0NTY5MDI4ODEyOCIsImFjY291bnRJZCI6ImY5NTlhODk1N2VmYTQ1NGY5ZmYyMDg1ODE2Y2NjOTNkIiwicHJvZHVjdElkIjoiMiIsImV4cCI6MTI0OTI4OTY3MDMsInVzZXJJZCI6ImY5NTlhODk1N2VmYTQ1NGY5ZmYyMDg1ODE2Y2NjOTNkIiwidXVpZCI6IjA5Mjk3MzcxM2JlMjQ4NmFhM2I5NTJlOGFjNzY1Nzk1IiwiaWF0IjoxNjkyODk2NzAzLCJ1c2VybmFtZSI6IjEzODEwNzU4NTUzIn0.v0ESpjpat8aZ0-nrf1_g8qsCVVCGOf2Jou0ucrwi0Zs";
     return cfg;
   },
   err => Promise.resolve(err)
