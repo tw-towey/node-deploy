@@ -2,7 +2,7 @@
  * @Author: tuWei
  * @Date: 2023-02-12 18:49:16
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-05-09 14:30:50
+ * @LastEditTime: 2023-09-19 23:23:13
  */
 
 // 快速构建移动端App包 构建前提是下载流水线线上的zip包，所以需要自动部署需要等待流水线包构建完成后使用。
@@ -113,6 +113,12 @@ const cloudinquiryapp = {
   name: "H5-cloud-inquiry-app-test",
   software_id: "41e39bfc1a0911ed940db8599fe53f7a",
 }
+
+// 微问诊
+const mall = {
+  name: "H5-lonch-mall-test",
+  software_id: "dfcec084843849ad88c3732f355a18be",
+}
 export default {
   pList:{
     manage,
@@ -135,6 +141,7 @@ export default {
     'cloudStewardApp(云管家)': cloudStewardApp,
     '问微诊': cloudinquiryapp,
     'yzsManage(云诊室后台)': yzsManage,
+    '私域商城' : mall
   },
   commonUrl:{
     getSign: 'https://test-platform-gateway.lonch.com.cn/osssign/sign/getSign',

@@ -184,13 +184,20 @@ async function updateFile(){
 
     // 保存新的h5版本
     let saveSoftwareArgs = {
-      version: version,
-      zip_path: urlText,
-      release_type: "test",
-      software_id : software_id,
-      inner_version: versionfnRes.serviceResult.data,
-      software_name: ""
-    };
+      demand:{ 
+        version: version,
+        zip_path: urlText,
+        release_type: "test",
+        software_id : software_id,
+        inner_version: versionfnRes.serviceResult.data,
+        software_name: "",
+        manageProductId: "41e39bfc1a0911ed940db8599fe53f7a",
+        productId: "41e39bfc1a0911ed940db8599fe53f7a",
+        terminalId: "0f6341232015f09502ee9d81b05c9528",
+        timestamp: new Date().getTime(),
+        ip: "0.0.0.0"
+      }
+    }
     // 获取发布版本号的id
     const rowFlag = await sendApi(saveSoftwareVersion, saveSoftwareArgs);
     if(!rowFlag.serviceResult.success){
