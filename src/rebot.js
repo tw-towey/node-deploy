@@ -10,8 +10,7 @@ Log(chalk.blue(' ---------------- 程序运行中...  ---------------- '));
 // 鼠标移动速度
 robot.setMouseDelay(6);
 // 移动的时间数组(min)
-// const moveMouseListMin = [10, 11, 12, 13, 14];
-const moveMouseListMin = [1];
+const moveMouseListMin = [10, 11, 12, 13, 14];
 // 桌面屏幕尺寸
 let screenSize = robot.getScreenSize();
 
@@ -43,9 +42,9 @@ async function moveMouseHandler(){
   
   timmer = setInterval(()=>{
     if(direction === 'moveLeft'){
-      moveX -= 2;
+      moveX -= 1;
     }else if(direction === 'moveRight'){
-      moveX += 2;
+      moveX += 1;
     }
     
     robot.moveMouse(moveX, moveY);
