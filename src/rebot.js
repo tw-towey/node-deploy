@@ -4,13 +4,14 @@ import robot from 'robotjs';
 import readline from 'readline';
 
 const Log = console.log;
-Log(chalk.blue(' ---------------- 开始执行监听程序...  ---------------- '));
+Log(chalk.blue(' ---------------- 程序运行中...  ---------------- '));
 
 
 // 鼠标移动速度
 robot.setMouseDelay(6);
 // 移动的时间数组(min)
-const moveMouseListMin = [6, 8, 10, 12, 14];
+// const moveMouseListMin = [10, 11, 12, 13, 14];
+const moveMouseListMin = [1];
 // 桌面屏幕尺寸
 let screenSize = robot.getScreenSize();
 
@@ -56,7 +57,7 @@ async function moveMouseHandler(){
 
 function putOnLogs() {
   clearLine();
-  process.stdout.write(chalk.blue( `当前移动时间:  `) + chalk.green( `${ Date() }`) + chalk.blue(`  移动总计:  `) + chalk.red(`${totalNumber}`));
+  process.stdout.write(chalk.green( `${ Date() }`) + chalk.blue(`  累计: `) + chalk.red(`${totalNumber}`));
   // process.stdout.clearScreenDown();
   // process.stdout.clearLine();
   // process.stdout.moveCursor(0, -1);
