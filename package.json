@@ -9,7 +9,8 @@
     "deploy": "./src/deploy.js",
     "noleave": "./src/rebot.js",
     "token": "./src/token.js",
-    "stwin": "./src/shutdown.js"
+    "stwin": "./src/shutdown.js",
+    "devportal": "./src/runportal.js"
   },
   "exports": "./index.js",
   "author": "",
@@ -24,6 +25,8 @@
     "formdata-node": "^5.0.0",
     "got": "^12.5.3",
     "inquirer": "^9.1.4",
+    "koa": "^2.14.2",
+    "koa-static": "^5.0.0",
     "robotjs": "^0.6.0"
   },
   "type": "module"

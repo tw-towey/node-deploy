@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <link rel="icon" href="./favicon.ico">
+  <title>朗致</title>
+  
+  
+<script defer src="chunk-vendors-d41f5a26.js"></script><script defer src="app-d41f5a26.js"></script></head>
+<body>
+<noscript>
+  <strong>We're sorry but reports doesn't work properly without JavaScript enabled. Please enable it to
+    continue.</strong>
+</noscript>
+<div id="app"></div>
+
+<script type="text/javascript" src="https://test-resources.lonch.com.cn/test-common-library/vue@2.6.11.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="https://test-resources.lonch.com.cn/test-common-library/vue-router@3.4.9.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="https://test-resources.lonch.com.cn/test-common-library/axios@0.21.0.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="https://test-resources.lonch.com.cn/test-common-library/element-ui@2.13.0-base.js" charset="UTF-8"></script>
+
+<script async src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+//防止页面被框架包含
+if (window.self !== window.top) {
+  window.top.location = window.self.location;
+}
+
+function getIP (json) {
+  window.ip = json.ip;
+}
+</script>
+<script async type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+</body>
+</html>
