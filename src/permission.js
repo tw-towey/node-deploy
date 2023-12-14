@@ -10,38 +10,42 @@ const { getPermissionUrlList, insertPermissionUrl } = config.commonUrl;
 
 async function getPermissionList(){
   // 必填
-  let permsId = '8ed6e512a7ff4566a618017d7a1be472';
+  let permsId = 'e5b6a5b95c2148b8a7b3461514162735';
   //必填
   const urls = {
-     //物化视图信息查看
-    mviewList: { module: 'quickmview', url: '/mview/info/list', method: 'POST', comment: '物化视图列表查询接口' },
-    mvListResultTableColumns: { module: 'quickmview', url: '/mview/info/listResultTableColumns', method: 'POST', comment: '结果表输出字段信息列表' },
-    mvResultTableDefInfo: { module: 'quickmview', url: '/mview/info/resultTableDefInfo', method: 'POST', comment: '结果表详情' },
-    mvSourceRefModelDetails: { module: 'quickmview', url: '/mview/info/sourceRefModelDetails', method: 'POST', comment: '源表关联模型详情' },
-    // 物化视图更新版本信息查看
-    unDetailInfo: { module: 'quickmview', url: '/mview/info/uversion/detailInfo', method: 'POST', comment: '查询物化视图更新版本详情' },
-    unSmsdoLogin: { module: 'quickmview', url: '/mview/info/uversion/list', method: 'POST', comment: '更新版本号列表' },
-    unSendloginSms: { module: 'quickmview', url: '/mview/info/uversion/watermarkInfo', method: 'POST', comment: '展示更新版本号水位信息' },
-    // 物化视图模型管理
-    mdCreateMView: { module: 'quickmview', url: '/mview/admin/modelDef/createMView', method: 'POST', comment: '物化视图新增接口' },
-    mdRebuildResultTableCreateSql: { module: 'quickmview', url: '/mview/admin/modelDef/rebuildResultTableCreateSql', method: 'POST', comment: '生成结果表的建表SQL' },
-    mdUpdateMView: { module: 'quickmview', url: '/mview/admin/modelDef/updateMView', method: 'POST', comment: '更新物化视图' },
-    mdUpdateResultTableColumns: { module: 'quickmview', url: '/mview/admin/modelDef/updateResultTableColumns', method: 'POST', comment: '更新物化视图结果表输出字段信息' },
-    mdUpdateResultTableCreateSql: { module: 'quickmview', url: '/mview/admin/modelDef/updateResultTableCreateSql', method: 'POST', comment: '更新结果表的建表SQL' },
-    mdUpdateResultTableDefs: { module: 'quickmview', url: '/mview/admin/modelDef/updateResultTableDefs', method: 'POST', comment: '更新物化视图结果表信息' },
-    mdUpdateResultTableIndices: { module: 'quickmview', url: '/mview/admin/modelDef/updateResultTableIndices', method: 'POST', comment: '更新物化视图结果表索引信息' },
-    mdUpdateSourceRefModelKeys: { module: 'quickmview', url: '/mview/admin/modelDef/updateSourceRefModelKeys', method: 'POST', comment: '更新物化视图源表关联信息' },
-    // 物化视图源表信息查看
-    mvSourceTableList: { module: 'quickmview', url: '/mview/sourceTable/list', method: 'POST', comment: '物化视图列表查询接口' },
-    mvSourceDataBases: { module: 'quickmview', url: '/mview/sourceTable/sourceDataBases', method: 'POST', comment: '展示源数据库实例列表' },
-    mvSourceDBInstances: { module: 'quickmview', url: '/mview/sourceTable/sourceDBInstances', method: 'POST', comment: '展示源数据库实例列表' },
-    mvSourceDbs: { module: 'quickmview', url: '/mview/sourceTable/sourceDbs', method: 'POST', comment: '展示源数据实例-库列表' },
-    mvTableAllColumns: { module: 'quickmview', url: '/mview/sourceTable/tableAllColumns', method: 'POST', comment: '展示源表所有字段信息' },
-    mvTableDetailInfo: { module: 'quickmview', url: '/mview/sourceTable/tableDetailInfo', method: 'POST', comment: '展示源表详情信息' },
-    // 物化视图状态流程管理
-    mvDeactivateMView: { module: 'quickmview', url: '/mview/admin/control/deactivateMView', method: 'POST', comment: '物化视图状态流程管理' },
-    mvDeleteMView: { module: 'quickmview', url: '/mview/admin/control/deleteMView', method: 'POST', comment: '物化视图状态流程管理' },
-    mvEnableMView: { module: 'quickmview', url: '/mview/admin/control/enableMView', method: 'POST', comment: '物化视图状态流程管理' }
+    importTemplateList: { module: 'ies', url: '/config/importTemplate/pageList', method: 'POST', comment: '查询导入模版分页信息'},
+      importTemplateDetail: { module: 'ies', url: '/config/importTemplate/detail', method: 'POST', comment: '查询导入模版分页信息'},
+      importSaveOrUpdate: { module: 'ies', url: '/config/importTemplate/saveOrUpdate', method: 'POST', comment: '保存/修改导入模版信息'},
+      datasourceList: { module: 'ies', url: '/config/datasource/selectList', method: 'POST', comment: '下拉数据源列表'},
+      tableSelectList: { module: 'ies', url: '/config/table/selectList', method: 'POST', comment: '表信息下拉列表'},
+      columnSelectList: { module: 'ies', url: '/config/table/column/selectList', method: 'POST', comment: '表字段信息列表'},
+      importMappingType: { module: 'ies', url: '/common/enum/importMappingType/selectList', method: 'POST', comment: '导入映射配置类型'},
+      dateValidTypeEnum: { module: 'ies', url: '/common/enum/dateValidType/selectList', method: 'POST', comment: '日期校验类型'},
+      validTypeEnum: { module: 'ies', url: '/common/enum/validType/selectList', method: 'POST', comment: '校验类型'},
+      dateFormatList: { module: 'ies', url: '/common/enum/dateFormat/selectList', method: 'POST', comment: '日期格式化类型'},
+      
+
+      transferType: { module: 'ies', url: '/common/enum/transferType/selectList', method: 'POST', comment: '转换类型'},
+      dateTransferType: { module: 'ies', url: '/common/enum/dateTransferType/selectList', method: 'POST', comment: '日期转换类型'},
+
+      // interfaceTypeList: { module: 'ies', url: '/common/enum/interfaceType/selectList', method: 'POST', comment: '接口类型'},
+      interfaceList: { module: 'ies', url: '/config/interface/selectList', method: 'POST', comment: '接口信息下拉列表'},
+      interfaceDetail: { module: 'ies', url: '/config/interface/detail', method: 'POST', comment: '接口详细信息'},
+
+      excelPageList: { module: 'ies', url: '/config/excel/pageList', method: 'POST', comment: 'EXCEL模版分页列表'},
+      excelSaveOrUpdate: { module: 'ies', url: '/config/excel/saveOrUpdate', method: 'POST', comment: '保存/修改EXCEL模版'},
+      excelDetail: { module: 'ies', url: '/config/excel/detail', method: 'POST', comment: 'EXCEL模版详情'},
+      excelSelectList: { module: 'ies', url: '/config/excel/selectList', method: 'POST', comment: 'EXCEL模版下拉列表'},
+
+      
+      
+      
+      exportTemplateDetail: { module: 'ies', url: '/config/exportTemplate/detail', method: 'POST', comment: '导出模版详情信息'},
+      exportTemplateList: { module: 'ies', url: '/config/exportTemplate/pageList', method: 'POST', comment: '查询导出模版分页信息'},
+      exportSaveOrUpdate: { module: 'ies', url: '/config/exportTemplate/saveOrUpdate', method: 'POST', comment: '保存/修改导出模版信息'},
+      
+      importPageList: { module: 'ies', url: '/core/import/pageList', method: 'POST', comment: '导入记录分页查询'},
+      exportPageList: { module: 'ies', url: '/core/export/pageList', method: 'POST', comment: '导出记录分页查询'}
   };
   let args = {
     demand:{

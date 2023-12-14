@@ -119,6 +119,13 @@ const mall = {
   name: "H5-lonch-mall-test",
   software_id: "dfcec084843849ad88c3732f355a18be",
 }
+
+// 导入导出
+const importAndExport = {
+  name: "lonch-base-ies-fe-test",
+  software_id: "84da12892c0442f2afc1d3e94edf3b4d",
+}
+
 export default {
   pList:{
     manage,
@@ -141,7 +148,8 @@ export default {
     'cloudStewardApp(云管家)': cloudStewardApp,
     '问微诊': cloudinquiryapp,
     'yzsManage(云诊室后台)': yzsManage,
-    '私域商城' : mall
+    '私域商城' : mall,
+    '公共导入导出' : importAndExport
   },
   commonUrl:{
     getSign: 'https://test-platform-gateway.lonch.com.cn/osssign/sign/getSign',
