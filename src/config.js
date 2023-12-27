@@ -126,6 +126,12 @@ const importAndExport = {
   software_id: "84da12892c0442f2afc1d3e94edf3b4d",
 }
 
+// lonch-medicine
+const medicine = {
+  name: "H5-medicine-test",
+  software_id: "0bc334f4eb16470e98def09bbf561bd5",
+}
+
 export default {
   pList:{
     manage,
@@ -149,7 +155,8 @@ export default {
     '问微诊': cloudinquiryapp,
     'yzsManage(云诊室后台)': yzsManage,
     '私域商城' : mall,
-    '公共导入导出' : importAndExport
+    '公共导入导出' : importAndExport,
+    'lonch-medicine': medicine
   },
   commonUrl:{
     getSign: 'https://test-platform-gateway.lonch.com.cn/osssign/sign/getSign',
