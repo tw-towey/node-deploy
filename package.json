@@ -21,6 +21,7 @@
     "chalk": "^5.2.0",
     "cheerio": "^1.0.0-rc.12",
     "commander": "^10.0.0",
+    "compressing": "^1.10.0",
     "crypto": "^1.0.1",
     "formdata-node": "^5.0.0",
     "got": "^12.5.3",
