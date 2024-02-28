@@ -12,7 +12,7 @@ const urlFile = "https://test-lonchbi.lonch.com.cn/devPortal.zip";
 const temFile = join(__dirname, './devPortal.zip');
 const app = new Koa();
 downLoadFile().then(()=>{
-  compressing.zip.uncompress(temFile, join(process.env.USERPROFILE, './'))
+  compressing.zip.uncompress(temFile, join(process.env.USERPROFILE || process.env.HOME, './'))
   .then(serveRun)
   .catch(()=>{});
 });
@@ -45,7 +45,8 @@ function serveRun(){
   fs.unlink(temFile,(err)=>{
     if (err) throw err;
   });
-  const staticMiddleware1 = staticMiddleware(join(process.env.USERPROFILE, './devPortal'));
+  // 兼容mac写法process.env.HOME
+  const staticMiddleware1 = staticMiddleware(join(process.env.USERPROFILE || process.env.HOME, './devPortal'));
   app.use(staticMiddleware1);
 }
 
