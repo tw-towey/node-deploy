@@ -7,6 +7,7 @@
   },
   "bin": {
     "deploy": "./src/deploy.js",
+    "blogs": "./src/blogs.js",
     "noleave": "./src/rebot.js",
     "token": "./src/token.js",
     "stwin": "./src/shutdown.js",
