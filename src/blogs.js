@@ -5,11 +5,11 @@ import { join } from 'node:path';
 let serveRoot;
 
 if(process.platform === 'darwin'){
-  serveRoot = join(process.env.HOME, '/Desktop//blogs');
+  serveRoot = join(process.env.HOME, '/Desktop/blogs/');
 }else if(process.platform === 'win32'){
-  serveRoot = join(process.env.USERPROFILE, '/Desktop/blogs');
+  serveRoot = join(process.env.USERPROFILE, '/Desktop/blogs/');
 }
-exec(`pm2 start 'serve -p 80 ${serveRoot}'`, (error, stdout, stderr) => {
+exec(`pm2 start 'serve -p 80 ${serveRoot} '`, (error, stdout, stderr) => {
   if (error) {
     console.error(`执行出错: ${error}`);
     return;
