@@ -35,10 +35,7 @@ function startChildProcess() {
   } catch (e){
     console.log('e :>> ', e);
   }
-  
-
-  
-  console.log('服务启动成功 :>>>> devportal');
+  console.log('Server started on port 8080 ：http://localhost:8080 \n' + 'logfile: ' + process.cwd() + '/portal_serve.log');
 }
 
 startChildProcess();
